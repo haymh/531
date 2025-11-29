@@ -4,10 +4,10 @@ const STORAGE_KEY_1RM = '531_1rm';
 
 export const useOneRepMax = () => {
     const [oneRepMaxes, setOneRepMaxes] = useState({
-        Squat: 0,
-        'Bench Press': 0,
-        Deadlift: 0,
-        'Overhead Press': 0
+        Squat: 95,
+        'Bench Press': 75,
+        Deadlift: 100,
+        'Overhead Press': 45
     });
 
     useEffect(() => {
