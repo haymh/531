@@ -39,7 +39,7 @@ const Dashboard = ({ oneRepMaxData, workoutProgressData, cycleData }) => {
                     <InputForm oneRepMaxData={oneRepMaxData} />
                     {hasMaxes && (
                         <button
-                            className="btn"
+                            className="btn btn-primary"
                             style={{ marginTop: '1rem', width: '100%' }}
                             onClick={() => setShowInputForm(false)}
                         >
@@ -48,7 +48,15 @@ const Dashboard = ({ oneRepMaxData, workoutProgressData, cycleData }) => {
                     )}
                 </div>
             ) : (
-                <div className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
+                <div className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '3px',
+                        background: 'var(--gradient-aurora-1)'
+                    }} />
                     <div>
                         <h4 style={{ margin: 0, fontSize: '0.875rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 5v14" /><path d="M18 5v14" /><path d="M2 12h20" /></svg>
@@ -64,7 +72,7 @@ const Dashboard = ({ oneRepMaxData, workoutProgressData, cycleData }) => {
                         </div>
                     </div>
                     <button
-                        className="btn btn-primary"
+                        className="btn btn-secondary"
                         onClick={() => setShowInputForm(true)}
                     >
                         ✏️ Edit
@@ -73,18 +81,18 @@ const Dashboard = ({ oneRepMaxData, workoutProgressData, cycleData }) => {
             )}
 
             {/* Tab Navigation */}
-            <div className="card" style={{ padding: '0.5rem', display: 'flex', gap: '0.5rem' }}>
+            <div className="card" style={{ padding: '0.5rem', display: 'flex', gap: '0.5rem', position: 'relative' }}>
                 <button
-                    className={activeTab === 'workout' ? 'btn btn-primary' : 'btn'}
-                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                    className={activeTab === 'workout' ? 'btn btn-primary' : 'btn btn-secondary'}
+                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.875rem 1rem' }}
                     onClick={() => setActiveTab('workout')}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6.5 6.5h11" /><path d="M6.5 17.5h11" /><path d="M6 20v-2a6 6 0 1 1 12 0v2" /><path d="M6 4v2a6 6 0 0 1 12 0V4" /></svg>
                     Today's Workout
                 </button>
                 <button
-                    className={activeTab === 'progression' ? 'btn btn-primary' : 'btn'}
-                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                    className={activeTab === 'progression' ? 'btn btn-primary' : 'btn btn-secondary'}
+                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.875rem 1rem' }}
                     onClick={() => setActiveTab('progression')}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>

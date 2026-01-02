@@ -26,8 +26,19 @@ const ProgressionView = ({ oneRepMaxes, cycles, startDates }) => {
     };
 
     return (
-        <div className="card">
-            <h3 style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="card" style={{ position: 'relative', overflow: 'hidden' }}>
+            {/* Gradient accent */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                background: 'var(--gradient-aurora-2)',
+                boxShadow: '0 0 20px rgba(240, 147, 251, 0.3)'
+            }} />
+
+            <h3 style={{ marginBottom: '0.75rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
                 Progression Forecast
             </h3>
@@ -60,10 +71,10 @@ const ProgressionView = ({ oneRepMaxes, cycles, startDates }) => {
                             <th style={{
                                 textAlign: 'center',
                                 padding: '0.5rem 0.25rem',
-                                borderBottom: '2px solid var(--color-border)',
+                                borderBottom: '2px solid var(--glass-border)',
                                 fontWeight: 'bold',
-                                backgroundColor: 'var(--color-primary)',
-                                color: 'white',
+                                background: 'var(--gradient-primary)',
+                                color: 'var(--color-text-dark)',
                                 fontSize: '0.75rem'
                             }}>
                                 Now
@@ -142,8 +153,17 @@ const ProgressionView = ({ oneRepMaxes, cycles, startDates }) => {
                 </table>
             </div>
 
-            <div style={{ marginTop: '1rem', padding: '0.75rem', backgroundColor: 'var(--color-background)', borderRadius: 'var(--radius-md)', fontSize: '0.8125rem' }}>
-                <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
+            <div style={{
+                marginTop: '1rem',
+                padding: '0.75rem',
+                background: 'var(--glass-bg-light)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                border: '1px solid var(--glass-border)',
+                borderRadius: 'var(--radius-md)',
+                fontSize: '0.8125rem'
+            }}>
+                <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.875rem', color: 'var(--color-text-muted)', fontWeight: 'var(--font-weight-bold)' }}>
                     💡 How It Works
                 </h4>
                 <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: '1.5' }}>
