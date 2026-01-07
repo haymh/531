@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import InputForm from '../components/InputForm';
 import { LIFTS } from '../utils/constants';
 import LiftIcon from '../components/LiftIcon';
-import useOnboarding from '../hooks/useOnboarding';
 
-const SettingsPage = ({ oneRepMaxData }) => {
+const SettingsPage = ({ oneRepMaxData, restartOnboarding }) => {
     const { oneRepMaxes } = oneRepMaxData;
-    const { restartOnboarding } = useOnboarding();
     const hasMaxes = Object.values(oneRepMaxes).some(max => max > 0);
     const [showInputForm, setShowInputForm] = useState(true);
 

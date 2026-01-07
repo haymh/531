@@ -89,6 +89,7 @@ function App() {
                 element={
                   <SettingsPage
                     oneRepMaxData={oneRepMaxData}
+                    restartOnboarding={restartOnboarding}
                   />
                 }
               />
