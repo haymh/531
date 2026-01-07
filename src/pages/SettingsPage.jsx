@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import InputForm from '../components/InputForm';
 import { LIFTS } from '../utils/constants';
 import LiftIcon from '../components/LiftIcon';
+import useOnboarding from '../hooks/useOnboarding';
 
 const SettingsPage = ({ oneRepMaxData }) => {
     const { oneRepMaxes } = oneRepMaxData;
+    const { restartOnboarding } = useOnboarding();
     const hasMaxes = Object.values(oneRepMaxes).some(max => max > 0);
     const [showInputForm, setShowInputForm] = useState(true);
 
@@ -57,6 +59,29 @@ const SettingsPage = ({ oneRepMaxData }) => {
                     </button>
                 </div>
             )}
+
+            {/* Getting Started Section */}
+            <div className="card" style={{ position: 'relative', overflow: 'hidden' }}>
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '3px',
+                    background: 'var(--gradient-aurora-1)'
+                }} />
+                <h3 style={{ marginBottom: '0.5rem', marginTop: '0.5rem' }}>Getting Started</h3>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1rem' }}>
+                    Review the 5/3/1 program basics and setup wizard
+                </p>
+                <button
+                    className="btn btn-secondary"
+                    onClick={restartOnboarding}
+                    style={{ width: '100%' }}
+                >
+                    🎓 Restart Tutorial
+                </button>
+            </div>
         </div>
     );
 };

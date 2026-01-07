@@ -3,9 +3,11 @@ import { useOneRepMax } from './hooks/useOneRepMax';
 import { useWorkoutProgress } from './hooks/useWorkoutProgress';
 import { useCycleManager } from './hooks/useCycleManager';
 import { useOnlineStatus } from './hooks/useOnlineStatus';
+import useOnboarding from './hooks/useOnboarding';
 import BottomNav from './components/BottomNav';
 import PullToRefresh from './components/PullToRefresh';
 import OnlineStatusIndicator from './components/OnlineStatusIndicator';
+import OnboardingFlow from './components/onboarding/OnboardingFlow';
 import WorkoutPage from './pages/WorkoutPage';
 import ProgressionPage from './pages/ProgressionPage';
 import LearnPage from './pages/LearnPage';
@@ -17,8 +19,12 @@ function App() {
   const oneRepMaxData = useOneRepMax();
   const cycleData = useCycleManager(oneRepMaxData.oneRepMaxes, oneRepMaxData.updateAllMaxes);
   const workoutProgressData = useWorkoutProgress(cycleData.incrementCycle, cycleData.advanceWeek, cycleData.setStartDate);
+  const { isOnboardingComplete, completeOnboarding, skipOnboarding, restartOnboarding } = useOnboarding();
 
   const canRefresh = isOnline && isServerReachable;
+
+  // Show onboarding if not completed
+  const showOnboarding = !isOnboardingComplete;
 
   const handleRefresh = async () => {
     // Check if online before attempting reload
@@ -38,6 +44,13 @@ function App() {
 
   return (
     <BrowserRouter>
+      {showOnboarding && (
+        <OnboardingFlow
+          oneRepMaxData={oneRepMaxData}
+          onComplete={completeOnboarding}
+          onSkip={skipOnboarding}
+        />
+      )}
       <OnlineStatusIndicator />
       <div className="container">
         <PullToRefresh onRefresh={handleRefresh} enabled={canRefresh}>
